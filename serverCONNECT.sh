@@ -3,25 +3,32 @@
 ################################################################################
 # Author:    Aaron Polley                                                      #
 # Date:      14/09/2017                                                        #
-# Version:   0.01                                                              #
+# Version:   0.02                                                              #
 # Purpose:   Scripting for mounting, monitoring and re-mounting server volumes #
 #            Should be triggered by LaunchAgent using WatchPaths               #
 ################################################################################
 
 #---Variables and such---#
-script_version="0.01"
+script_version="0.02"
 user_id=`id -u`
 user_name=`id -un $user_id`
 home_dir=`dscl . read /Users/"$user_name" NFSHomeDirectory | awk '{print $2}'`
 log_file="$home_dir/Library/Logs/serverCONNECT.log"
 os_vers=`sw_vers -productVersion | awk -F "." '{print $2}'`
 DateTime=`date "+%a %b %d %H:%M:%S"`
-ServerName="KFD NAS"
+ServerName="NAS"
 ServerIP="10.3.14.20"
 ServerDomain="server.mycompany.private"
 ShareVolume="Software"
 ShareMountPoint="/Volumes/$ShareVolume/"
 SharePath="$ServerIP/$ShareVolume"
+
+#--Uncomment below for more volume mounts--#
+
+#ShareVolume2="DATA"
+#ShareMountPoint2="/Volumes/$ShareVolume2/"
+#SharePath2="$ServerIP/$ShareVolume2"
+
 #--Uncomment the correct ShareType, only have 1!--#
 #ShareType="smb"
 ShareType="afp"
@@ -48,6 +55,7 @@ echo "$DateTime - Mounting network volumes for $ServerName..."
 #	tell application "Finder"
 #	activate
 	mount volume "$ShareType://$SharePath"
+# mount volume "$ShareType://$SharePath2"
 #	end tell
 EOT`
 
@@ -67,6 +75,9 @@ if [ $user_name = "ladmin" ]; then
     exit 0
 fi
 if [ ! -e "$ShareMountPoint" ]; then        # Check if the volume is present
+
+#-- OR separate multiple mounts to check with "||" ---#
+#if [ ! -e "$ShareMountPoint" ] || [ ! -e "$ShareMountPoint2" ]; then
 
   if ping -q -c 1 -W 1 "$ServerIP" >/dev/null; then
 
