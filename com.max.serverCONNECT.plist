@@ -1,0 +1,21 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+       <string>com.max.serverCONNECT</string>
+    <key>ProgramArguments</key>
+    <array>
+	   <string>/Library/Scripts/serverCONNECT.sh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+       <string>/Volumes/</string>
+    </array>
+    <key>StartInterval</key>
+      <integer>300</integer>
+    <key>RunAtLoad</key>
+      <true/>
+</dict>
+</plist>
