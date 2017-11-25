@@ -4,7 +4,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-       <string>com.max.serverCONNECT</string>
+       <string>com.github.aarondavidpolley.serverCONNECT</string>
     <key>ProgramArguments</key>
     <array>
 	   <string>/Library/Scripts/serverCONNECT.sh</string>

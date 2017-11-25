@@ -1,5 +1,5 @@
 # serverCONNECT
 
-In development scripting for mounting, monitoring and re-mounting server volumes
+Scripting for mounting, monitoring and re-mounting server volumes
 
-Do not use without permission
+This is available under the MIT License: https://github.com/aarondavidpolley/serverCONNECT/blob/master/LICENSE
