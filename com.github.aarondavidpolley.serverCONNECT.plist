@@ -8,6 +8,7 @@
     <key>ProgramArguments</key>
     <array>
 	   <string>/Library/Scripts/serverCONNECT.sh</string>
+     <!--<string>debug</string>-->
     </array>
     <key>WatchPaths</key>
     <array>
